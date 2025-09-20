@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
-import { auth } from "./middlewares/auth";
+``;
 
 dotenv.config();
 
@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 });
 
 // 404 Handler
-app.use("*", (req, res) => {
+app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: "Route not found",

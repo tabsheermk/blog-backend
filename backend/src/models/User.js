@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import uniqueValidator from "mongoose-unique-validator";
 import jwt from "jsonwebtoken";
 

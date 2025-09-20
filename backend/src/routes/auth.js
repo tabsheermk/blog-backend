@@ -1,7 +1,7 @@
 import express from "express";
 import { body, validationResult } from "express-validator";
 import User from "../models/User.js";
-import { auth } from "../middlewares/auth";
+import { auth } from "../middlewares/auth.js";
 
 const router = express.Router();
 
@@ -211,6 +211,26 @@ router.post("/login", loginValidation, async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Server error during login",
+    });
+  }
+});
+
+// @route   POST /api/auth/logout
+// @desc    Logout user (simple client-side logout)
+// @access  Private
+router.post("/logout", auth, async (req, res) => {
+  try {
+    // Simple logout - just respond with success
+    // The frontend will remove the token from localStorage/storage
+    res.json({
+      success: true,
+      message: "Logged out successfully",
+    });
+  } catch (error) {
+    console.error("Logout error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server error during logout",
     });
   }
 });
