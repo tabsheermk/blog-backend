@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
-``;
+import postRoutes from "./routes/posts.js";
+import commentRoutes from "./routes/comments.js";
 
 dotenv.config();
 
@@ -30,6 +31,8 @@ if (process.env.NODE_ENV === "development") {
 
 // ROutes
 app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
 
 // Test route
 app.get("/", (req, res) => {
